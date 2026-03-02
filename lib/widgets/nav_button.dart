@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// Simple navigation button with tap feedback.
 class NavButton extends StatelessWidget {
-  const NavButton({super.key, required this.child, this.onTap});
+  const NavButton({required this.child, super.key, this.onTap});
 
   final Widget child;
   final VoidCallback? onTap;

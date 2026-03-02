@@ -6,6 +6,16 @@ import 'calendar_view_range.dart';
 
 @immutable
 class DayViewRange extends CalendarViewRange {
+  factory DayViewRange.fromMap(Map<String, dynamic> map) {
+    return DayViewRange._(
+      date: DateTime.fromMillisecondsSinceEpoch(
+        map['date'] as int? ?? DateTime.now().millisecondsSinceEpoch,
+      ),
+    );
+  }
+
+  factory DayViewRange.fromJson(String source) =>
+      DayViewRange.fromMap(json.decode(source) as Map<String, dynamic>);
   const DayViewRange._({required DateTime date})
     : super(start: date, end: date);
 
@@ -35,18 +45,7 @@ class DayViewRange extends CalendarViewRange {
     };
   }
 
-  factory DayViewRange.fromMap(Map<String, dynamic> map) {
-    return DayViewRange._(
-      date: DateTime.fromMillisecondsSinceEpoch(
-        map['date'] ?? DateTime.now().millisecondsSinceEpoch,
-      ),
-    );
-  }
-
   String toJson() => json.encode(toMap());
-
-  factory DayViewRange.fromJson(String source) =>
-      DayViewRange.fromMap(json.decode(source));
 
   @override
   String toString() => 'DayViewRange(date: $date, start: $start, end: $end)';

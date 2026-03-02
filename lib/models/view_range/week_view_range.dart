@@ -6,6 +6,15 @@ import 'calendar_view_range.dart';
 
 @immutable
 class WeekViewRange extends CalendarViewRange {
+  factory WeekViewRange.fromMap(Map<String, dynamic> map) {
+    final startDate = DateTime.fromMillisecondsSinceEpoch(
+      map['start'] as int? ?? DateTime.now().millisecondsSinceEpoch,
+    );
+    return WeekViewRange.fromDate(startDate);
+  }
+
+  factory WeekViewRange.fromJson(String source) =>
+      WeekViewRange.fromMap(json.decode(source) as Map<String, dynamic>);
   const WeekViewRange._({required super.start, required super.end});
 
   factory WeekViewRange.fromDate(DateTime date) {
@@ -39,17 +48,7 @@ class WeekViewRange extends CalendarViewRange {
     };
   }
 
-  factory WeekViewRange.fromMap(Map<String, dynamic> map) {
-    final startDate = DateTime.fromMillisecondsSinceEpoch(
-      map['start'] ?? DateTime.now().millisecondsSinceEpoch,
-    );
-    return WeekViewRange.fromDate(startDate);
-  }
-
   String toJson() => json.encode(toMap());
-
-  factory WeekViewRange.fromJson(String source) =>
-      WeekViewRange.fromMap(json.decode(source));
 
   @override
   String toString() => 'WeekViewRange(start: $start, end: $end)';

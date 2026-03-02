@@ -6,10 +6,10 @@ import '../models/calendar_view_mode.dart';
 /// Simple toggle button for Month/Week view.
 class ViewToggle extends StatelessWidget {
   const ViewToggle({
-    super.key,
     required this.currentViewMode,
     required this.onViewModeChanged,
     required this.theme,
+    super.key,
   });
 
   final CalendarViewMode currentViewMode;

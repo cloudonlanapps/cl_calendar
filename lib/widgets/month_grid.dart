@@ -5,11 +5,11 @@ import 'cell_wrapper.dart';
 
 class MonthGrid extends StatelessWidget {
   const MonthGrid({
-    super.key,
     required this.range,
     required this.width,
     required this.rowHeight,
     required this.dateBuilder,
+    super.key,
     this.cellBorder,
   });
 

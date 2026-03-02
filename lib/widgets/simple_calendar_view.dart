@@ -3,11 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../models/resolved_sizes.dart';
-import '../providers/reference_datetime.dart';
-import '../providers/selected_datetime.dart';
 import '../models/view_range/day_view_range.dart';
 import '../models/view_range/month_view_range.dart';
 import '../models/view_range/week_view_range.dart';
+import '../providers/reference_datetime.dart';
+import '../providers/selected_datetime.dart';
 import 'calendar_navigation_header.dart';
 import 'calendar_widget.dart';
 import 'day_grid.dart';
@@ -30,9 +30,9 @@ const _kTimeLabelWidth = 50.0;
 /// The hourly views are scrollable and show events positioned at their times.
 class SimpleCalendarView extends CalendarWidget {
   const SimpleCalendarView({
-    super.key,
     required super.controller,
     required super.range,
+    super.key,
     super.headerBuilder,
     super.columnHeaderBuilder,
     super.dateBuilder,
@@ -76,7 +76,7 @@ class SimpleCalendarView extends CalendarWidget {
                 children: [
                   // Time label spacer for hourly views
                   if (isHourlyView && range is WeekViewRange)
-                    SizedBox(width: _kTimeLabelWidth),
+                    const SizedBox(width: _kTimeLabelWidth),
                   // Day headers
                   ..._buildColumnHeaders(
                     context,
@@ -277,7 +277,7 @@ class SimpleCalendarView extends CalendarWidget {
       }
       final availableHeight =
           constraints.maxHeight - (header ?? 0) - (colHeader ?? 0);
-      final rowCount = 6;
+      const rowCount = 6;
       row = availableHeight / rowCount;
     }
 

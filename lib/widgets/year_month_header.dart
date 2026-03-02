@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
+import '../models/view_range/calendar_view_range.dart';
 import '../models/view_range/month_view_range.dart';
 import '../models/view_range/week_view_range.dart';
 import '../providers/calendar_view_range.dart';
@@ -55,8 +56,9 @@ class _YearMonthHeaderState extends ConsumerState<YearMonthHeader> {
 
   @override
   void dispose() {
-    popoverController.removeListener(_onPopoverStateChanged);
-    popoverController.dispose();
+    popoverController
+      ..removeListener(_onPopoverStateChanged)
+      ..dispose();
     super.dispose();
   }
 
@@ -77,7 +79,7 @@ class _YearMonthHeaderState extends ConsumerState<YearMonthHeader> {
   Widget _buildHeader(
     BuildContext context,
     ShadThemeData theme,
-    dynamic range,
+    CalendarViewRange range,
     DateTime referenceDate,
   ) {
     // Determine the display date based on range type
@@ -173,7 +175,7 @@ class _YearMonthHeaderState extends ConsumerState<YearMonthHeader> {
                 final isSelected =
                     currentMonth == monthIndex && _pendingYear == null;
                 void onPressed() {
-                  final newDate = DateTime.utc(effectiveYear, monthIndex, 1);
+                  final newDate = DateTime.utc(effectiveYear, monthIndex);
                   ref.read(calendarViewRangeProvider.notifier).jumpTo(newDate);
                   // Reset pending year and close popover
                   setState(() {
@@ -203,7 +205,7 @@ class _YearMonthHeaderState extends ConsumerState<YearMonthHeader> {
         ),
       ),
       child: InkWell(
-        onTap: () => popoverController.toggle(),
+        onTap: popoverController.toggle,
         borderRadius: BorderRadius.circular(6),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),

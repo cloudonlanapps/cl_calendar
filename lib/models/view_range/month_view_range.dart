@@ -7,22 +7,32 @@ import 'calendar_view_range.dart';
 @immutable
 class MonthViewRange extends CalendarViewRange {
   MonthViewRange({required this.year, required this.month})
-    : super(start: DateTime(year, month, 1), end: DateTime(year, month + 1, 0));
+    : super(start: DateTime(year, month), end: DateTime(year, month + 1, 0));
+
+  factory MonthViewRange.fromDate(DateTime date) {
+    return MonthViewRange(year: date.year, month: date.month);
+  }
+
+  factory MonthViewRange.fromMap(Map<String, dynamic> map) {
+    return MonthViewRange(
+      year: map['year'] as int? ?? 0,
+      month: map['month'] as int? ?? 0,
+    );
+  }
+
+  factory MonthViewRange.fromJson(String source) =>
+      MonthViewRange.fromMap(json.decode(source) as Map<String, dynamic>);
 
   final int year;
   final int month;
 
   int get daysInMonth => end.day;
 
-  factory MonthViewRange.fromDate(DateTime date) {
-    return MonthViewRange(year: date.year, month: date.month);
-  }
-
   /// Builds grid of dates for this month. Always 6 rows.
   /// Each cell contains either a date or null (empty cell).
   List<List<DateTime?>> buildGrid() {
     final offset = start.weekday - 1; // 0 = Monday, 6 = Sunday
-    int day = 1;
+    var day = 1;
 
     return List.generate(6, (row) {
       return List.generate(7, (col) {
@@ -56,14 +66,7 @@ class MonthViewRange extends CalendarViewRange {
     };
   }
 
-  factory MonthViewRange.fromMap(Map<String, dynamic> map) {
-    return MonthViewRange(year: map['year'] ?? 0, month: map['month'] ?? 0);
-  }
-
   String toJson() => json.encode(toMap());
-
-  factory MonthViewRange.fromJson(String source) =>
-      MonthViewRange.fromMap(json.decode(source));
 
   @override
   String toString() =>

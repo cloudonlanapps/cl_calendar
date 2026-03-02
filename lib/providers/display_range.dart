@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// The display range for the calendar (min/max navigable dates).
 final displayRangeProvider = StateProvider<DateTimeRange>((ref) {
   return DateTimeRange(
-    start: DateTime.utc(2024, 1, 1),
-    end: DateTime.utc(2030, 1, 1),
+    start: DateTime.utc(2024),
+    end: DateTime.utc(2030),
   );
 });

@@ -11,18 +11,18 @@ import '../providers/calendar_view_range.dart';
 import '../providers/display_range.dart';
 import '../providers/reference_datetime.dart';
 import '../providers/selected_datetime.dart';
-import 'year_month_header.dart';
-import 'year_week_header.dart';
 import 'nav_button.dart';
 import 'view_toggle.dart';
+import 'year_month_header.dart';
+import 'year_week_header.dart';
 
 /// A reusable navigation header for calendar views.
 /// Includes prev/next navigation, today button, date picker, and view toggle.
 class CalendarNavigationHeader extends ConsumerWidget {
   const CalendarNavigationHeader({
-    super.key,
     required this.range,
     required this.size,
+    super.key,
   });
 
   final CalendarViewRange range;
@@ -56,7 +56,7 @@ class CalendarNavigationHeader extends ConsumerWidget {
             // Part 1: Navigation (arrows + today)
             if (config.showNavigationArrows) ...[
               NavButton(
-                onTap: isAtStart ? null : () => controller.previous(),
+                onTap: isAtStart ? null : controller.previous,
                 child: Icon(
                   LucideIcons.chevronLeft,
                   size: 18,
@@ -66,7 +66,7 @@ class CalendarNavigationHeader extends ConsumerWidget {
                 ),
               ),
               NavButton(
-                onTap: isAtEnd ? null : () => controller.next(),
+                onTap: isAtEnd ? null : controller.next,
                 child: Icon(
                   LucideIcons.chevronRight,
                   size: 18,

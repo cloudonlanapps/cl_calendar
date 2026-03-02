@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class CellWrapper extends StatelessWidget {
   const CellWrapper({
-    super.key,
     required this.width,
     required this.height,
     required this.child,
+    super.key,
     this.border,
   });
 

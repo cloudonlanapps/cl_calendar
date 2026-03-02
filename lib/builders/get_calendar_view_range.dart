@@ -16,7 +16,7 @@ typedef CalendarViewRangeBuilder =
     );
 
 class GetCalendarViewRange extends ConsumerWidget {
-  const GetCalendarViewRange({super.key, required this.builder});
+  const GetCalendarViewRange({required this.builder, super.key});
 
   final CalendarViewRangeBuilder builder;
 
@@ -36,7 +36,7 @@ class GetCalendarViewRange extends ConsumerWidget {
               ref.read(selectedDateTimeProvider.notifier).state = dateTime,
         );
       },
-      error: (e, st) => const Center(child: Text("Error Occurred")),
+      error: (e, st) => const Center(child: Text('Error Occurred')),
       loading: () => const Center(child: CircularProgressIndicator()),
     );
   }

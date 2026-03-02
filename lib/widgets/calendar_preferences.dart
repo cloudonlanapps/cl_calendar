@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
@@ -111,15 +113,17 @@ class CalendarPreferences extends ConsumerWidget {
     WidgetRef ref,
     DateTime current,
   ) {
-    showShadDialog(
-      context: context,
-      builder: (context) => _DateTimePickerDialog(
-        initialDateTime: current,
-        onConfirm: (newDateTime) {
-          ref.read(customReferenceDateTimeUtcProvider.notifier).state =
-              newDateTime;
-          ref.read(selectedDateTimeProvider.notifier).state = newDateTime;
-        },
+    unawaited(
+      showShadDialog<void>(
+        context: context,
+        builder: (context) => _DateTimePickerDialog(
+          initialDateTime: current,
+          onConfirm: (newDateTime) {
+            ref.read(customReferenceDateTimeUtcProvider.notifier).state =
+                newDateTime;
+            ref.read(selectedDateTimeProvider.notifier).state = newDateTime;
+          },
+        ),
       ),
     );
   }

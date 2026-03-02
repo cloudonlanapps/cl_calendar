@@ -6,7 +6,7 @@ import '../models/view_range/day_view_range.dart';
 import '../providers/reference_datetime.dart';
 
 /// Width of the time label column.
-const double kTimeLabelWidth = 50.0;
+const double kTimeLabelWidth = 50;
 
 /// Number of 30-minute slots in a day.
 const int kSlotsPerDay = 48;
@@ -20,11 +20,11 @@ const int kMinVisibleHours = 4;
 /// The slot height is calculated to fit at least [kMinVisibleHours] hours in the visible area.
 class DayGrid extends ConsumerStatefulWidget {
   const DayGrid({
-    super.key,
     required this.range,
     required this.width,
     required this.rowHeight,
     required this.slotBuilder,
+    super.key,
     this.cellBorder,
   });
 

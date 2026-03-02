@@ -10,7 +10,7 @@ typedef ReferenceDateTimeUtcBuilder =
 /// Builder widget that provides the reference date time.
 /// Use this when you need access to the reference time.
 class GetReferenceDateTimeUtc extends ConsumerWidget {
-  const GetReferenceDateTimeUtc({super.key, required this.builder});
+  const GetReferenceDateTimeUtc({required this.builder, super.key});
 
   final ReferenceDateTimeUtcBuilder builder;
 

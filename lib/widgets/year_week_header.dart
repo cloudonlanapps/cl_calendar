@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
+import '../models/view_range/calendar_view_range.dart';
 import '../models/view_range/week_view_range.dart';
 import '../providers/calendar_view_range.dart';
 import '../providers/reference_datetime.dart';
@@ -58,8 +59,9 @@ class _YearWeekHeaderState extends ConsumerState<YearWeekHeader> {
 
   @override
   void dispose() {
-    popoverController.removeListener(_onPopoverStateChanged);
-    popoverController.dispose();
+    popoverController
+      ..removeListener(_onPopoverStateChanged)
+      ..dispose();
     super.dispose();
   }
 
@@ -80,7 +82,7 @@ class _YearWeekHeaderState extends ConsumerState<YearWeekHeader> {
   Widget _buildHeader(
     BuildContext context,
     ShadThemeData theme,
-    dynamic range,
+    CalendarViewRange range,
     DateTime referenceDate,
   ) {
     if (range is! WeekViewRange) {
@@ -228,7 +230,7 @@ class _YearWeekHeaderState extends ConsumerState<YearWeekHeader> {
         ),
       ),
       child: InkWell(
-        onTap: () => popoverController.toggle(),
+        onTap: popoverController.toggle,
         borderRadius: BorderRadius.circular(6),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -270,7 +272,7 @@ class _YearWeekHeaderState extends ConsumerState<YearWeekHeader> {
     final weeks = <DateTime>[];
 
     // Start from the Monday of the week containing the 1st of the month
-    var firstOfMonth = DateTime(year, month, 1);
+    final firstOfMonth = DateTime(year, month);
     var monday = firstOfMonth.subtract(
       Duration(days: firstOfMonth.weekday - 1),
     );

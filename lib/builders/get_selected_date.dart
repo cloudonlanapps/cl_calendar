@@ -14,7 +14,7 @@ typedef SelectedDateBuilder =
 /// Use this when you only need access to the selected date without the full
 /// calendar view range.
 class GetSelectedDate extends ConsumerWidget {
-  const GetSelectedDate({super.key, required this.builder});
+  const GetSelectedDate({required this.builder, super.key});
 
   final SelectedDateBuilder builder;
 

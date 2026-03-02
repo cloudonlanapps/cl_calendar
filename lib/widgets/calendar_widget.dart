@@ -7,9 +7,9 @@ import '../models/view_range/calendar_view_range.dart';
 /// No page transitions - that's handled by the parent wrapper.
 abstract class CalendarWidget extends StatelessWidget {
   const CalendarWidget({
-    super.key,
     required this.controller,
     required this.range,
+    super.key,
     this.rowHeight,
     this.headerHeight,
     this.columnHeaderHeight,
