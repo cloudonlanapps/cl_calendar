@@ -14,7 +14,7 @@ export 'models/view_range/month_view_range.dart' show MonthViewRange;
 export 'models/view_range/week_view_range.dart' show WeekViewRange;
 
 // Providers
-export 'providers/reference_datetime.dart' show referenceDateTimeUtcProvider;
+//export 'providers/reference_datetime.dart' show referenceDateTimeUtcProvider;
 
 // Widgets
 export 'widgets/calendar_preferences.dart' show CalendarPreferences;
