@@ -5,6 +5,7 @@ library;
 
 // Builders
 export 'builders/get_calendar_view_range.dart' show GetCalendarViewRange;
+export 'builders/get_reference_date_time_utc.dart' show GetReferenceDateTimeUtc;
 export 'builders/get_selected_date.dart' show GetSelectedDate;
 
 // Models
