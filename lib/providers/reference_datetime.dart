@@ -6,10 +6,10 @@ import 'use_live_time.dart';
 /// The reference date used as "current time" throughout the app.
 /// Returns DateTime.now().toUtc() if useLiveTimeProvider is true,
 /// otherwise returns the custom time.
-final referenceDateTimeUtcProvider = Provider<DateTime>((ref) {
+final referenceDateTimeUtcProvider = Provider<DateTime?>((ref) {
   final useLive = ref.watch(useLiveTimeProvider);
   if (useLive) {
-    return DateTime.now().toUtc();
+    return null;
   }
   return ref.watch(customReferenceDateTimeUtcProvider);
 });

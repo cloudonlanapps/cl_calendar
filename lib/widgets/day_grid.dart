@@ -60,7 +60,9 @@ class _DayGridState extends ConsumerState<DayGrid> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!_scrollController.hasClients || !mounted) return;
 
-      final refDate = ref.read(referenceDateTimeUtcProvider).toLocal();
+      final refDate =
+          (ref.read(referenceDateTimeUtcProvider) ?? DateTime.now().toUtc())
+              .toLocal();
       final targetMinutes = refDate.hour * 60 + refDate.minute;
 
       final slotHeight = widget.rowHeight / (kMinVisibleHours * 2);
@@ -83,7 +85,8 @@ class _DayGridState extends ConsumerState<DayGrid> {
   @override
   Widget build(BuildContext context) {
     final theme = ShadTheme.of(context);
-    final refDate = ref.watch(referenceDateTimeUtcProvider);
+    final refDate =
+        ref.watch(referenceDateTimeUtcProvider) ?? DateTime.now().toUtc();
 
     final contentWidth = widget.width - kTimeLabelWidth;
     final slotHeight = widget.rowHeight / (kMinVisibleHours * 2);
@@ -115,7 +118,10 @@ class _DayGridState extends ConsumerState<DayGrid> {
                   // Current time marker (only for today)
                   if (isToday)
                     _buildCurrentTimeMarker(
-                        theme, currentTimeMinutes, slotHeight),
+                      theme,
+                      currentTimeMinutes,
+                      slotHeight,
+                    ),
                 ],
               ),
             ),
@@ -146,7 +152,11 @@ class _DayGridState extends ConsumerState<DayGrid> {
     );
   }
 
-  Widget _buildDayColumn(DateTime date, double contentWidth, double slotHeight) {
+  Widget _buildDayColumn(
+    DateTime date,
+    double contentWidth,
+    double slotHeight,
+  ) {
     final cellSize = Size(contentWidth, slotHeight);
     final borderWidth = widget.cellBorder?.width ?? 0;
 
@@ -202,10 +212,7 @@ class _DayGridState extends ConsumerState<DayGrid> {
             ),
           ),
           Expanded(
-            child: Container(
-              height: 2,
-              color: theme.colorScheme.destructive,
-            ),
+            child: Container(height: 2, color: theme.colorScheme.destructive),
           ),
         ],
       ),

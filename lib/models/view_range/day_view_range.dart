@@ -6,7 +6,8 @@ import 'calendar_view_range.dart';
 
 @immutable
 class DayViewRange extends CalendarViewRange {
-  const DayViewRange._({required DateTime date}) : super(start: date, end: date);
+  const DayViewRange._({required DateTime date})
+    : super(start: date, end: date);
 
   factory DayViewRange.fromDate(DateTime date) {
     return DayViewRange._(date: DateUtils.dateOnly(date));

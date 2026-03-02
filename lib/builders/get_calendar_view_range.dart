@@ -7,12 +7,13 @@ import '../providers/calendar_view_range.dart';
 import '../providers/selected_datetime.dart';
 
 /// Builder callback signature for GetCalendarViewRange.
-typedef CalendarViewRangeBuilder = Widget Function(
-  CalendarController controller,
-  CalendarViewRange range,
-  DateTime selectedDateTime,
-  void Function(DateTime) onChangeSelectedDateTime,
-);
+typedef CalendarViewRangeBuilder =
+    Widget Function(
+      CalendarController controller,
+      CalendarViewRange range,
+      DateTime selectedDateTime,
+      void Function(DateTime) onChangeSelectedDateTime,
+    );
 
 class GetCalendarViewRange extends ConsumerWidget {
   const GetCalendarViewRange({super.key, required this.builder});

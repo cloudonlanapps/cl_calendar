@@ -15,7 +15,8 @@ class CalendarPreferences extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final useLiveTime = ref.watch(useLiveTimeProvider);
-    final refDateTime = ref.watch(referenceDateTimeUtcProvider);
+    final refDateTime =
+        ref.watch(referenceDateTimeUtcProvider) ?? DateTime.now().toUtc();
     final theme = ShadTheme.of(context);
 
     return Column(
@@ -62,10 +63,7 @@ class CalendarPreferences extends ConsumerWidget {
                 : () => _showDateTimePicker(context, ref, refDateTime),
             behavior: HitTestBehavior.opaque,
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 12,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: Row(
                 children: [
                   Icon(

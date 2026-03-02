@@ -4,10 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/selected_datetime.dart';
 
 /// Builder callback signature for GetSelectedDate.
-typedef SelectedDateBuilder = Widget Function(
-  DateTime selectedDate,
-  void Function(DateTime) onSelectDate,
-);
+typedef SelectedDateBuilder =
+    Widget Function(
+      DateTime selectedDate,
+      void Function(DateTime) onSelectDate,
+    );
 
 /// Builder widget that provides the selected date and a callback to change it.
 /// Use this when you only need access to the selected date without the full
@@ -23,7 +24,8 @@ class GetSelectedDate extends ConsumerWidget {
 
     return builder(
       selectedDate,
-      (dateTime) => ref.read(selectedDateTimeProvider.notifier).state = dateTime,
+      (dateTime) =>
+          ref.read(selectedDateTimeProvider.notifier).state = dateTime,
     );
   }
 }

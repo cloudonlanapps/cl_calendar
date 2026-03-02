@@ -60,7 +60,9 @@ class _WeekGridState extends ConsumerState<WeekGrid> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!_scrollController.hasClients || !mounted) return;
 
-      final refDate = ref.read(referenceDateTimeUtcProvider).toLocal();
+      final refDate =
+          (ref.read(referenceDateTimeUtcProvider) ?? DateTime.now().toUtc())
+              .toLocal();
       final targetMinutes = refDate.hour * 60 + refDate.minute;
 
       final slotHeight = widget.rowHeight / (kMinVisibleHours * 2);
@@ -83,7 +85,8 @@ class _WeekGridState extends ConsumerState<WeekGrid> {
   @override
   Widget build(BuildContext context) {
     final theme = ShadTheme.of(context);
-    final refDate = ref.watch(referenceDateTimeUtcProvider);
+    final refDate =
+        ref.watch(referenceDateTimeUtcProvider) ?? DateTime.now().toUtc();
 
     final contentWidth = widget.width - kTimeLabelWidth;
     final columnWidth = contentWidth / 7;

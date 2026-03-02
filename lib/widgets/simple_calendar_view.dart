@@ -69,7 +69,9 @@ class SimpleCalendarView extends CalendarWidget {
             // Column headers (weekdays)
             // For hourly views, show date + day; for month view, just day name
             SizedBox(
-              height: isHourlyView ? sizes.columnHeaderHeight * 1.5 : sizes.columnHeaderHeight,
+              height: isHourlyView
+                  ? sizes.columnHeaderHeight * 1.5
+                  : sizes.columnHeaderHeight,
               child: Row(
                 children: [
                   // Time label spacer for hourly views
@@ -105,7 +107,15 @@ class SimpleCalendarView extends CalendarWidget {
   }
 
   /// Short weekday names (0 = Monday, 6 = Sunday).
-  static const _shortDayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  static const _shortDayNames = [
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat',
+    'Sun',
+  ];
 
   List<Widget> _buildColumnHeaders(
     BuildContext context,
@@ -134,7 +144,9 @@ class SimpleCalendarView extends CalendarWidget {
               Text(
                 '${date.day}',
                 style: theme.textTheme.small.copyWith(
-                  fontWeight: isFirstOfMonth ? FontWeight.bold : FontWeight.w400,
+                  fontWeight: isFirstOfMonth
+                      ? FontWeight.bold
+                      : FontWeight.w400,
                   color: theme.colorScheme.foreground,
                 ),
               ),
@@ -166,7 +178,9 @@ class SimpleCalendarView extends CalendarWidget {
                 Text(
                   '${date.day}',
                   style: theme.textTheme.small.copyWith(
-                    fontWeight: isFirstOfMonth ? FontWeight.bold : FontWeight.w400,
+                    fontWeight: isFirstOfMonth
+                        ? FontWeight.bold
+                        : FontWeight.w400,
                     color: theme.colorScheme.foreground,
                   ),
                 ),
@@ -202,8 +216,7 @@ class SimpleCalendarView extends CalendarWidget {
     // Default builders when not provided
     Widget defaultDateBuilder(DateTime date, Size size) =>
         _DefaultDateCell(date: date, size: size);
-    Widget defaultSlotBuilder(DateTime slotTime, Size size) =>
-        const SizedBox();
+    Widget defaultSlotBuilder(DateTime slotTime, Size size) => const SizedBox();
 
     return switch (range) {
       MonthViewRange() => MonthGrid(
@@ -285,7 +298,15 @@ class _DefaultColumnHeader extends StatelessWidget {
 
   final int dayIndex;
 
-  static const _shortDayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  static const _shortDayNames = [
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat',
+    'Sun',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -311,7 +332,8 @@ class _DefaultDateCell extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final refDate = ref.watch(referenceDateTimeUtcProvider);
+    final refDate =
+        ref.watch(referenceDateTimeUtcProvider) ?? DateTime.now().toUtc();
     final selectedDateTime = ref.watch(selectedDateTimeProvider);
     final isToday = DateUtils.isSameDay(date, refDate.toLocal());
     final isSelected = DateUtils.isSameDay(date, selectedDateTime);

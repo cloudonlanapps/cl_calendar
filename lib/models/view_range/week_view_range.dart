@@ -29,10 +29,7 @@ class WeekViewRange extends CalendarViewRange {
       WeekViewRange.fromDate(start.subtract(const Duration(days: 7)));
 
   WeekViewRange copyWith({DateTime? start, DateTime? end}) {
-    return WeekViewRange._(
-      start: start ?? this.start,
-      end: end ?? this.end,
-    );
+    return WeekViewRange._(start: start ?? this.start, end: end ?? this.end);
   }
 
   Map<String, dynamic> toMap() {
@@ -60,9 +57,7 @@ class WeekViewRange extends CalendarViewRange {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    return other is WeekViewRange &&
-        other.start == start &&
-        other.end == end;
+    return other is WeekViewRange && other.start == start && other.end == end;
   }
 
   @override

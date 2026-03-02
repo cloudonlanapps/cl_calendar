@@ -7,10 +7,7 @@ import 'calendar_view_range.dart';
 @immutable
 class MonthViewRange extends CalendarViewRange {
   MonthViewRange({required this.year, required this.month})
-      : super(
-          start: DateTime(year, month, 1),
-          end: DateTime(year, month + 1, 0),
-        );
+    : super(start: DateTime(year, month, 1), end: DateTime(year, month + 1, 0));
 
   final int year;
   final int month;
@@ -47,10 +44,7 @@ class MonthViewRange extends CalendarViewRange {
       : MonthViewRange(year: year, month: month - 1);
 
   MonthViewRange copyWith({int? year, int? month}) {
-    return MonthViewRange(
-      year: year ?? this.year,
-      month: month ?? this.month,
-    );
+    return MonthViewRange(year: year ?? this.year, month: month ?? this.month);
   }
 
   Map<String, dynamic> toMap() {
@@ -63,10 +57,7 @@ class MonthViewRange extends CalendarViewRange {
   }
 
   factory MonthViewRange.fromMap(Map<String, dynamic> map) {
-    return MonthViewRange(
-      year: map['year'] ?? 0,
-      month: map['month'] ?? 0,
-    );
+    return MonthViewRange(year: map['year'] ?? 0, month: map['month'] ?? 0);
   }
 
   String toJson() => json.encode(toMap());

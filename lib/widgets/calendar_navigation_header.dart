@@ -79,9 +79,10 @@ class CalendarNavigationHeader extends ConsumerWidget {
             if (config.showTodayButton && !isCompact)
               NavButton(
                 onTap: () {
-                  final refDate = ref
-                      .read(referenceDateTimeUtcProvider)
-                      .toLocal();
+                  final refDate =
+                      (ref.read(referenceDateTimeUtcProvider) ??
+                              DateTime.now().toUtc())
+                          .toLocal();
                   controller.jumpTo(refDate);
                   ref.read(selectedDateTimeProvider.notifier).state = refDate;
                 },

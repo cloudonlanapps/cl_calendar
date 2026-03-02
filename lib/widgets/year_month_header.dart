@@ -64,7 +64,8 @@ class _YearMonthHeaderState extends ConsumerState<YearMonthHeader> {
   Widget build(BuildContext context) {
     final theme = ShadTheme.of(context);
     final rangeAsync = ref.watch(calendarViewRangeProvider);
-    final referenceDate = ref.watch(referenceDateTimeUtcProvider);
+    final referenceDate =
+        ref.watch(referenceDateTimeUtcProvider) ?? DateTime.now().toUtc();
 
     return rangeAsync.when(
       loading: () => const SizedBox.shrink(),

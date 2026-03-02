@@ -28,7 +28,7 @@ abstract class CalendarWidget extends StatelessWidget {
 
   /// Builder for the calendar header. If null, uses CalendarNavigationHeader.
   final Widget Function(CalendarViewRange currentRange, Size size)?
-      headerBuilder;
+  headerBuilder;
 
   /// Builder for column headers (weekday names). If null, uses default weekday labels.
   final Widget Function(int dayIndex, Size size)? columnHeaderBuilder;
