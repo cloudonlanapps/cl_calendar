@@ -1,0 +1,23 @@
+name: cl_calendar_example
+description: Example app demonstrating cl_calendar widgets (DatePickerPopover, SimpleCalendarView).
+publish_to: none
+
+environment:
+  sdk: ^3.11.0
+  flutter: ">=3.10.0"
+
+dependencies:
+  cl_calendar:
+    path: ../
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.5.0
+  shadcn_ui: ^0.54.0
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

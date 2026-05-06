@@ -105,6 +105,18 @@ class CalendarNavigationHeader extends ConsumerWidget {
                   ref.read(calendarViewModeProvider.notifier).state = mode;
                 },
                 theme: theme,
+              )
+            else if (config.reserveViewToggleSpace)
+              Visibility(
+                visible: false,
+                maintainSize: true,
+                maintainAnimation: true,
+                maintainState: true,
+                child: ViewToggle(
+                  currentViewMode: viewMode,
+                  onViewModeChanged: (_) {},
+                  theme: theme,
+                ),
               ),
           ],
         ),
@@ -166,6 +178,10 @@ class CalendarNavigationHeader extends ConsumerWidget {
     ShadThemeData theme,
     CalendarViewRangeNotifier controller,
   ) {
-    return const YearMonthHeader();
+    final config = ref.watch(calendarHeaderConfigProvider);
+    return YearMonthHeader(
+      yearsBefore: config.yearsBefore,
+      yearsAfter: config.yearsAfter,
+    );
   }
 }
