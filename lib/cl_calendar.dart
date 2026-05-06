@@ -16,6 +16,9 @@ export 'models/view_range/week_view_range.dart' show WeekViewRange;
 // Providers
 //export 'providers/reference_datetime.dart' show referenceDateTimeUtcProvider;
 
+// Utils
+export 'utils/cl_date_validators.dart' show CLDateValidators;
+
 // Widgets
 export 'widgets/calendar_preferences.dart' show CalendarPreferences;
 export 'widgets/cl_date_picker.dart' show CLDatePicker;
