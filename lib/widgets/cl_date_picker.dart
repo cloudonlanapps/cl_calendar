@@ -24,8 +24,8 @@ import 'simple_calendar_view.dart';
 /// Each popover instance lives in its own nested [ProviderScope], so multiple
 /// pickers — or a picker rendered alongside an embedded calendar — do not
 /// share selection state.
-class DatePickerPopover extends StatefulWidget {
-  const DatePickerPopover({
+class CLDatePicker extends StatefulWidget {
+  const CLDatePicker({
     required this.child,
     required this.onDateSelected,
     this.initialDate,
@@ -72,10 +72,10 @@ class DatePickerPopover extends StatefulWidget {
   final int yearsAfter;
 
   @override
-  State<DatePickerPopover> createState() => _DatePickerPopoverState();
+  State<CLDatePicker> createState() => _ClDatePickerState();
 }
 
-class _DatePickerPopoverState extends State<DatePickerPopover> {
+class _ClDatePickerState extends State<CLDatePicker> {
   final ShadPopoverController popoverController = ShadPopoverController();
 
   /// Shared between the outer popover and the nested year/month popover so
@@ -128,7 +128,7 @@ class _DatePickerPopoverState extends State<DatePickerPopover> {
               CalendarViewRangeNotifier.new,
             ),
           ],
-          child: _DatePickerPopoverBody(
+          child: _ClDatePickerBody(
             initial: initial,
             rowHeight: widget.rowHeight,
             headerHeight: widget.headerHeight,
@@ -149,8 +149,8 @@ class _DatePickerPopoverState extends State<DatePickerPopover> {
   }
 }
 
-class _DatePickerPopoverBody extends ConsumerWidget {
-  const _DatePickerPopoverBody({
+class _ClDatePickerBody extends ConsumerWidget {
+  const _ClDatePickerBody({
     required this.initial,
     required this.rowHeight,
     required this.headerHeight,

@@ -18,5 +18,6 @@ export 'models/view_range/week_view_range.dart' show WeekViewRange;
 
 // Widgets
 export 'widgets/calendar_preferences.dart' show CalendarPreferences;
-export 'widgets/date_picker_popover.dart' show DatePickerPopover;
+export 'widgets/cl_date_picker.dart' show CLDatePicker;
+export 'widgets/cl_date_picker_form_field.dart' show CLDatePickerFormField;
 export 'widgets/simple_calendar_view.dart' show SimpleCalendarView;
