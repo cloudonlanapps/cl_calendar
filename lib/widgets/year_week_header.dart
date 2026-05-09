@@ -229,28 +229,31 @@ class _YearWeekHeaderState extends ConsumerState<YearWeekHeader> {
           ],
         ),
       ),
-      child: InkWell(
+      child: GestureDetector(
         onTap: popoverController.toggle,
-        borderRadius: BorderRadius.circular(6),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                rangeText,
-                style: theme.textTheme.small.copyWith(
-                  fontWeight: FontWeight.w600,
+        behavior: HitTestBehavior.opaque,
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  rangeText,
+                  style: theme.textTheme.small.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: theme.colorScheme.foreground,
+                  ),
+                ),
+                const SizedBox(width: 4),
+                Icon(
+                  Icons.arrow_drop_down,
+                  size: 20,
                   color: theme.colorScheme.foreground,
                 ),
-              ),
-              const SizedBox(width: 4),
-              Icon(
-                Icons.arrow_drop_down,
-                size: 20,
-                color: theme.colorScheme.foreground,
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

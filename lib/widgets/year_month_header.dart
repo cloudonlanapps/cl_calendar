@@ -147,28 +147,31 @@ class _YearMonthHeaderState extends ConsumerState<YearMonthHeader> {
               ),
         ),
       ),
-      child: InkWell(
+      child: GestureDetector(
         onTap: popoverController.toggle,
-        borderRadius: BorderRadius.circular(6),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                monthText,
-                style: theme.textTheme.small.copyWith(
-                  fontWeight: FontWeight.w600,
+        behavior: HitTestBehavior.opaque,
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  monthText,
+                  style: theme.textTheme.small.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: theme.colorScheme.foreground,
+                  ),
+                ),
+                const SizedBox(width: 4),
+                Icon(
+                  Icons.arrow_drop_down,
+                  size: 20,
                   color: theme.colorScheme.foreground,
                 ),
-              ),
-              const SizedBox(width: 4),
-              Icon(
-                Icons.arrow_drop_down,
-                size: 20,
-                color: theme.colorScheme.foreground,
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -208,8 +211,8 @@ class _YearMonthHeaderState extends ConsumerState<YearMonthHeader> {
                   child: const Icon(Icons.chevron_left, size: 18),
                 ),
                 // Tappable year — opens the year-grid for fast jumps.
-                InkWell(
-                  borderRadius: BorderRadius.circular(4),
+                GestureDetector(
+                  behavior: HitTestBehavior.opaque,
                   onTap: () {
                     setState(() {
                       _showYearGrid = true;
@@ -218,16 +221,19 @@ class _YearMonthHeaderState extends ConsumerState<YearMonthHeader> {
                       );
                     });
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 4,
-                    ),
-                    child: Text(
-                      (_pendingYear ?? currentYear).toString(),
-                      textAlign: TextAlign.center,
-                      style: theme.textTheme.p.copyWith(
-                        fontWeight: FontWeight.w600,
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      child: Text(
+                        (_pendingYear ?? currentYear).toString(),
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.p.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),

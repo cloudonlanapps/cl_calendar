@@ -9,10 +9,15 @@ class NavButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(6),
-      child: Padding(padding: const EdgeInsets.all(8), child: child),
+      behavior: HitTestBehavior.opaque,
+      child: MouseRegion(
+        cursor: onTap == null
+            ? SystemMouseCursors.basic
+            : SystemMouseCursors.click,
+        child: Padding(padding: const EdgeInsets.all(8), child: child),
+      ),
     );
   }
 }
