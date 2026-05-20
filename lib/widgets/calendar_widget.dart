@@ -30,10 +30,12 @@ abstract class CalendarWidget extends StatelessWidget {
   final Widget Function(CalendarViewRange currentRange, Size size)?
   headerBuilder;
 
-  /// Builder for column headers (weekday names). If null, uses default weekday labels.
+  /// Builder for column headers (weekday names). If null, uses default weekday
+  /// labels.
   final Widget Function(int dayIndex, Size size)? columnHeaderBuilder;
 
-  /// Builder for month view day cells. If null, uses default day number display.
+  /// Builder for month view day cells. If null, uses default day number
+  /// display.
   final Widget Function(DateTime date, Size size)? dateBuilder;
 
   /// Builder for week/day view 30-minute time slots. If null, uses empty container.

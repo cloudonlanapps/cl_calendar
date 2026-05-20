@@ -17,7 +17,8 @@ const int kMinVisibleHours = 4;
 
 /// Week grid showing 7 day columns with hourly time slots.
 /// Each day column renders slots using the provided slotBuilder.
-/// The slot height is calculated to fit at least [kMinVisibleHours] hours in the visible area.
+/// The slot height is calculated to fit at least [kMinVisibleHours] hours in
+/// the visible area.
 class WeekGrid extends ConsumerStatefulWidget {
   const WeekGrid({
     required this.range,

@@ -17,7 +17,8 @@ const int kMinVisibleHours = 4;
 
 /// Day grid showing a single day with hourly time slots.
 /// Each slot is rendered using the provided slotBuilder.
-/// The slot height is calculated to fit at least [kMinVisibleHours] hours in the visible area.
+/// The slot height is calculated to fit at least [kMinVisibleHours] hours in
+/// the visible area.
 class DayGrid extends ConsumerStatefulWidget {
   const DayGrid({
     required this.range,

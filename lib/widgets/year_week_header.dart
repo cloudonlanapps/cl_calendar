@@ -100,15 +100,17 @@ class _YearWeekHeaderState extends ConsumerState<YearWeekHeader> {
 
     // Format the display text: "23 Feb - 1 Mar 2025"
     final String rangeText;
+    final startMon = _shortMonthNames[start.month - 1];
+    final endMon = _shortMonthNames[end.month - 1];
     if (start.month == end.month) {
-      rangeText =
-          '${start.day} - ${end.day} ${_shortMonthNames[end.month - 1]} ${end.year}';
+      rangeText = '${start.day} - ${end.day} $endMon ${end.year}';
     } else if (start.year == end.year) {
       rangeText =
-          '${start.day} ${_shortMonthNames[start.month - 1]} - ${end.day} ${_shortMonthNames[end.month - 1]} ${end.year}';
+          '${start.day} $startMon - ${end.day} $endMon ${end.year}';
     } else {
       rangeText =
-          '${start.day} ${_shortMonthNames[start.month - 1]} ${start.year} - ${end.day} ${_shortMonthNames[end.month - 1]} ${end.year}';
+          '${start.day} $startMon ${start.year} - '
+          '${end.day} $endMon ${end.year}';
     }
 
     final effectiveYear = _pendingYear ?? currentYear;
@@ -204,8 +206,10 @@ class _YearWeekHeaderState extends ConsumerState<YearWeekHeader> {
               final weekEnd = weekStart.add(const Duration(days: 6));
               final isCurrentWeek = weekStart.isAtSameMomentAs(start);
 
+              final startMon = _shortMonthNames[weekStart.month - 1];
+              final endMon = _shortMonthNames[weekEnd.month - 1];
               final label =
-                  '${weekStart.day} ${_shortMonthNames[weekStart.month - 1]} - ${weekEnd.day} ${_shortMonthNames[weekEnd.month - 1]}';
+                  '${weekStart.day} $startMon - ${weekEnd.day} $endMon';
 
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 2),

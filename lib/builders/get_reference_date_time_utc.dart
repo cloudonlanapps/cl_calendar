@@ -4,7 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/reference_datetime.dart';
 
 /// Builder callback signature for GetReferenceDateTimeUtc.
-/// The DateTime? is null when using live time (SDK handles current time internally).
+/// The DateTime? is null when using live time (SDK handles current time
+/// internally).
 typedef ReferenceDateTimeUtcBuilder = Widget Function(DateTime? referenceDate);
 
 /// Builder widget that provides the reference date time.

@@ -9,7 +9,8 @@ import '../providers/reference_datetime.dart';
 import '../providers/selected_datetime.dart';
 import '../providers/use_live_time.dart';
 
-/// Widget for calendar time preferences (live time toggle + custom time picker).
+/// Widget for calendar time preferences (live time toggle + custom time
+/// picker).
 /// Encapsulates useLiveTimeProvider and customReferenceDateTimeUtcProvider.
 class CalendarPreferences extends ConsumerWidget {
   const CalendarPreferences({super.key});
@@ -104,8 +105,12 @@ class CalendarPreferences extends ConsumerWidget {
 
   String _formatDateTime(DateTime dt) {
     final local = dt.toLocal();
-    return '${local.year}-${local.month.toString().padLeft(2, '0')}-${local.day.toString().padLeft(2, '0')} '
-        '${local.hour.toString().padLeft(2, '0')}:${local.minute.toString().padLeft(2, '0')}';
+    final y = local.year;
+    final mo = local.month.toString().padLeft(2, '0');
+    final d = local.day.toString().padLeft(2, '0');
+    final h = local.hour.toString().padLeft(2, '0');
+    final mi = local.minute.toString().padLeft(2, '0');
+    return '$y-$mo-$d $h:$mi';
   }
 
   void _showDateTimePicker(
