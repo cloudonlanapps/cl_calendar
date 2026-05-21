@@ -22,7 +22,15 @@ class WeekViewRange extends CalendarViewRange {
     final monday = d.subtract(Duration(days: d.weekday - 1));
     return WeekViewRange._(
       start: monday,
-      end: monday.add(const Duration(days: 6)),
+      end: monday.add(
+        const Duration(
+          days: 6,
+          hours: 23,
+          minutes: 59,
+          seconds: 59,
+          milliseconds: 999,
+        ),
+      ),
     );
   }
 

@@ -7,7 +7,10 @@ import 'calendar_view_range.dart';
 @immutable
 class MonthViewRange extends CalendarViewRange {
   MonthViewRange({required this.year, required this.month})
-    : super(start: DateTime(year, month), end: DateTime(year, month + 1, 0));
+    : super(
+        start: DateTime(year, month),
+        end: DateTime(year, month + 1, 0, 23, 59, 59, 999),
+      );
 
   factory MonthViewRange.fromDate(DateTime date) {
     return MonthViewRange(year: date.year, month: date.month);
