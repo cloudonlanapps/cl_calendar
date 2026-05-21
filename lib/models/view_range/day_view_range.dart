@@ -16,8 +16,18 @@ class DayViewRange extends CalendarViewRange {
 
   factory DayViewRange.fromJson(String source) =>
       DayViewRange.fromMap(json.decode(source) as Map<String, dynamic>);
-  const DayViewRange._({required DateTime date})
-    : super(start: date, end: date);
+  DayViewRange._({required DateTime date})
+    : super(
+        start: date,
+        end: date.add(
+          const Duration(
+            hours: 23,
+            minutes: 59,
+            seconds: 59,
+            milliseconds: 999,
+          ),
+        ),
+      );
 
   factory DayViewRange.fromDate(DateTime date) {
     return DayViewRange._(date: DateUtils.dateOnly(date));
