@@ -105,8 +105,7 @@ class _YearWeekHeaderState extends ConsumerState<YearWeekHeader> {
     if (start.month == end.month) {
       rangeText = '${start.day} - ${end.day} $endMon ${end.year}';
     } else if (start.year == end.year) {
-      rangeText =
-          '${start.day} $startMon - ${end.day} $endMon ${end.year}';
+      rangeText = '${start.day} $startMon - ${end.day} $endMon ${end.year}';
     } else {
       rangeText =
           '${start.day} $startMon ${start.year} - '

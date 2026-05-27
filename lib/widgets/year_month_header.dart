@@ -132,19 +132,19 @@ class _YearMonthHeaderState extends ConsumerState<YearMonthHeader> {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 4),
           child: _showYearGrid
-            ? _buildYearGrid(
-                theme,
-                effectiveYear: _pendingYear ?? currentYear,
-                startYear: startYear,
-                endYear: endYear,
-              )
-            : _buildMonthGrid(
-                theme,
-                currentYear: currentYear,
-                currentMonth: currentMonth,
-                startYear: startYear,
-                endYear: endYear,
-              ),
+              ? _buildYearGrid(
+                  theme,
+                  effectiveYear: _pendingYear ?? currentYear,
+                  startYear: startYear,
+                  endYear: endYear,
+                )
+              : _buildMonthGrid(
+                  theme,
+                  currentYear: currentYear,
+                  currentMonth: currentMonth,
+                  startYear: startYear,
+                  endYear: endYear,
+                ),
         ),
       ),
       child: GestureDetector(

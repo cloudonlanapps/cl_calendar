@@ -193,11 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class _Row extends StatelessWidget {
-  const _Row({
-    required this.label,
-    required this.picked,
-    required this.picker,
-  });
+  const _Row({required this.label, required this.picked, required this.picker});
 
   final String label;
   final String picked;
