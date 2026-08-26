@@ -10,9 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_riverpod: 2.6.1
-  shadcn_ui: 0.54.0
+  shadcn_ui: 0.56.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  very_good_analysis: 10.2.0
+  very_good_analysis: 10.3.0
